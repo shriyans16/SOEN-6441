@@ -1,14 +1,16 @@
+import pdb
 from decimal import *
 
 
 # getcontext().prec = 5
 
-
-def factorial(n):  # global variable to be used throughtout the program
-    if n < 1:
-        return 1
-    else:
-        return n * factorial(n - 1)
+class MathClass(object):
+    @staticmethod
+    def factorial(n):  # global variable to be used throughtout the program
+        if n < 1:
+            return 1
+        else:
+            return n * MathClass.factorial(n - 1)
 
 
 def calc_pi():
@@ -18,6 +20,7 @@ def calc_pi():
         (Decimal(4) / (8 * a + 1)) - (Decimal(2) / (8 * a + 4)) - (Decimal(1) / (8 * a + 5)) - (
         Decimal(1) / (8 * a + 6)))  # BBFformula
     return float(p)
+
 
 
 def degree_to_radian(degree):
@@ -45,7 +48,7 @@ def sin(x):  # function for calculating sin value
         term1 = pow(-1, n)  # taylor series for calculating sine and cos
         twoNplusOne = (2 * n) + 1
         term2 = pow(x, twoNplusOne)
-        term3 = factorial(twoNplusOne)
+        term3 = MathClass.factorial(twoNplusOne)
         term12 = term1 * term2
         term123 = term12 / term3
         sineValue = sineValue + term123
@@ -55,10 +58,10 @@ def sin(x):  # function for calculating sin value
 def cos(x):
     cos_value = 0.0
     for n in range(0, 10):
-        term1 = pow(-1, n)  # taylor series
+        term1 = pow(-1, n)# taylor series
         twoN = (2 * n)
         term2 = pow(x, twoN)
-        term3 = factorial(twoN)
+        term3 = MathClass.factorial(twoN)
         term12 = term1 * term2
         term123 = term12 / term3
         cos_value = cos_value + term123
@@ -76,3 +79,7 @@ term1 = (2 * r)
 term2 = (1.0 - cosAlphaByTwo)
 l_value = term1 * term2
 print "Length of segment = ", l_value
+
+f= open("output.txt","w")
+f.write("Radius: " + str(r) +"\n"+ "Length of segment: "+ str(l_value))
+f.close()
