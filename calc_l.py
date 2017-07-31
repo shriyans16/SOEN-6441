@@ -15,7 +15,7 @@ class MathClass(object):
         for a in xrange(0, 10):
             p += (Decimal(1) / (16 ** a)) * (
                 (Decimal(4) / (8 * a + 1)) - (Decimal(2) / (8 * a + 4)) - (Decimal(1) / (8 * a + 5)) - (
-                    Decimal(1) / (8 * a + 6)))  # BBFformula
+                    Decimal(1) / (8 * a + 6)))  # BBPformula
         return float(p)
 
     @staticmethod
@@ -26,7 +26,7 @@ class MathClass(object):
     def sin(x):  # function for calculating sin value
         sin_value = 0.0
         for n in range(0, 10):
-            term1 = pow(-1, n)  # taylor series for calculating sine and cos
+            term1 = pow(-1, n)  # taylor series for calculating sine
             two_n_plus_one = (2 * n) + 1
             term2 = pow(x, two_n_plus_one)
             term3 = MathClass.factorial(two_n_plus_one)
@@ -36,10 +36,10 @@ class MathClass(object):
         return sin_value
 
     @staticmethod
-    def cos(x):
+    def cos(x): # function for calculating cosine value
         cos_value = 0.0
         for n in range(0, 10):
-            term1 = pow(-1, n)  # taylor series
+            term1 = pow(-1, n)  # taylor series cos
             two_n = (2 * n)
             term2 = pow(x, two_n)
             term3 = MathClass.factorial(two_n)
